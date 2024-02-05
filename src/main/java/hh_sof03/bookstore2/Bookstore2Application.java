@@ -15,7 +15,7 @@ public class Bookstore2Application {
 		SpringApplication.run(Bookstore2Application.class, args);
 	}
 
-	@Bean
+	@Bean(destroyMethod="")
 	public CommandLineRunner bookDemo(BookRepository BookRepository) {
 		return (args) -> {
 
