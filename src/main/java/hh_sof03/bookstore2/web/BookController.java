@@ -15,14 +15,14 @@ import hh_sof03.bookstore2.domain.Book;
 public class BookController {
 
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
     public String Books(Model model) {
 		
 		List<Book> Books = new ArrayList<Book>();
 
 		model.addAttribute("Books", Books);
 		
-		return "frontpage";
+		return "booklist";
 		
     }
 }
