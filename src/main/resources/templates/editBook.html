@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Book</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<div class="container">
+	<h1>Edit book</h1>
+	<div class="col-md-4">
+		<form th:object="${book}" th:action="@{/save}" action="#" method="post">
+			<input type="text" th:field="${book.isbn}" class="form-control"
+				placeholder="ISBN" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" th:field="${book.title}" class="form-control"
+				placeholder="Title" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="text" th:field="${book.author}" class="form-control"
+				placeholder="Author" />
+			<div style="clear: both; display: block; height: 10px;"></div>	
+			<input type="text" th:field="${book.year}" class="form-control"
+				placeholder="Year" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+                        <input type="text" th:field="${book.price}" class="form-control"
+				placeholder="Price" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" name="action" class="btn btn-primary" value="Save"></input>
+			<input type="submit" name="action" class="btn btn-secondary" value="Cancel"></input>
+            <input type="hidden" th:field="${book.id}"/>
+		</form>
+	</div>
+</div>
+</body>
+</html>
