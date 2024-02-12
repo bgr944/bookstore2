@@ -43,6 +43,11 @@ public class BookController {
 		return "redirect:booklist";
 	}
 
+	@RequestMapping(value = "/cancel", method=RequestMethod.POST)
+	public String cancelSave(Book book) {
+		return "redirect:booklist";
+	}
+
 	@RequestMapping(value = "/delete/{id}", method=RequestMethod.GET)
 	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 		BookRepository.deleteById(bookId);
