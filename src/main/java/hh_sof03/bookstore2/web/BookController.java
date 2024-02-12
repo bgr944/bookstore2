@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import hh_sof03.bookstore2.domain.Book;
+import hh_sof03.bookstore2.domain.Category;
 import hh_sof03.bookstore2.domain.BookRepository;
+import hh_sof03.bookstore2.domain.CategoryRepository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -20,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BookController {
 	@Autowired
 	private BookRepository BookRepository;
+
+	@Autowired
+	private CategoryRepository cRepository;
 
 	
 	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
@@ -34,6 +39,7 @@ public class BookController {
 	@RequestMapping(value = "/add", method=RequestMethod.GET)
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
+		model.addAttribute("categories", cRepository.findAll());
 		return "addBook";
 	}
 	
@@ -58,6 +64,8 @@ public class BookController {
 	public String editBook(@PathVariable("id") Long bookId, Model model) {
 		Book book = BookRepository.findById(bookId).get();
 		model.addAttribute("book", book);
+		model.addAttribute("categories", cRepository.findAll());
+
 		return "editBook";
 	}
 

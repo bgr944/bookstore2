@@ -6,7 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import hh_sof03.bookstore2.domain.BookRepository;
+import hh_sof03.bookstore2.domain.CategoryRepository;
 import hh_sof03.bookstore2.domain.Book;
+import hh_sof03.bookstore2.domain.Category;
+
 
 @SpringBootApplication
 public class Bookstore2Application {
@@ -16,12 +19,17 @@ public class Bookstore2Application {
 	}
 
 	@Bean(destroyMethod="")
-	public CommandLineRunner bookDemo(BookRepository BookRepository) {
+	public CommandLineRunner bookDemo(BookRepository BookRepository, CategoryRepository cRepository) {
 		return (args) -> {
 
-			BookRepository.save(new Book("9780582461512", "Cannery Row", "John Steinbeck", 1945, 15.00));
-			BookRepository.save(new Book("978-951-0-322-95-6", "1984", "George Orwell", 1949, 20.00));
-			BookRepository.save(new Book("10-5050000149", "Crime and Punishment", "Fyodor Dostoevsky", 1866, 40.00));
+			cRepository.save(new Category("Comedy"));
+			cRepository.save(new Category("Horror"));
+			cRepository.save(new Category("Tragedy"));
+
+
+			BookRepository.save(new Book("943-46575-7", "Big Scary Book", "Matias Lento", 2021, 15.00, cRepository.findByName("Horror").get(0)));
+			BookRepository.save(new Book("8464-2523", "Little Funny Book", "Matias Lento", 2022, 10.00, cRepository.findByName("Comedy").get(0)));
+			BookRepository.save(new Book("835-728357458", "Short Sad Book", "Matias Lento", 2023, 100.00, cRepository.findByName("Tragedy").get(0)));
 
 		};
 	}
