@@ -8,6 +8,8 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Category {
 
@@ -17,6 +19,7 @@ public class Category {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    @JsonIgnoreProperties("category")
     private List<Book> books;
 
     public Category() {
@@ -55,7 +58,7 @@ public class Category {
     @Override
     public String toString()
     {
-        return categoryId + " " + name;
+        return "Category [categoryid=" + categoryId + ", name=" + name + "]";
     }
 
     
