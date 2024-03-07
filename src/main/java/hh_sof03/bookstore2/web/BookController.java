@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import hh_sof03.bookstore2.domain.Book;
 import hh_sof03.bookstore2.domain.Category;
@@ -54,7 +55,8 @@ public class BookController {
 		return "redirect:booklist";
 	}
 
-	@RequestMapping(value = "/delete/{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('ADMIN')")
 	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 		BookRepository.deleteById(bookId);
 		return "redirect:../booklist";
@@ -69,4 +71,9 @@ public class BookController {
 		return "editBook";
 	}
 
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "login";
+	}
+	
 }
