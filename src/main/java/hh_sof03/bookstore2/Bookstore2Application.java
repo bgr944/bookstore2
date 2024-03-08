@@ -39,10 +39,10 @@ public class Bookstore2Application {
 			BookRepository.save(new Book("835-728357458", "Short Sad Book", "Matias Lento", 2023, 100.00,
 					cRepository.findByName("Tragedy").get(0)));
 
-			//User user1 = new User("user", "$2a$10$rXDzQdck/8YPYyqgBLJODe.3/.P7l18ZibXzsTSLZP4NHYYHWE5qm", "USER");
-			//User user2 = new User("admin", "$2a$10$zxXy45iQui5/DqaiQMBXNOZ3kkQGfvbwIcnOz.02cIAQOT05Nzf2O", "ADMIN");
-			//uRepository.save(user1);
-			//uRepository.save(user2);
+			User user1 = new User("user", "$2a$10$rXDzQdck/8YPYyqgBLJODe.3/.P7l18ZibXzsTSLZP4NHYYHWE5qm", "USER");
+			User user2 = new User("admin", "$2a$10$zxXy45iQui5/DqaiQMBXNOZ3kkQGfvbwIcnOz.02cIAQOT05Nzf2O", "ADMIN");
+			uRepository.save(user1);
+			uRepository.save(user2);
 
 			for (Book book : BookRepository.findAll()) {
 				log.info(book.toString());
