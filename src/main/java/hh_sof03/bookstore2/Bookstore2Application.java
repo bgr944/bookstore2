@@ -32,11 +32,11 @@ public class Bookstore2Application {
 			cRepository.save(new Category("Horror"));
 			cRepository.save(new Category("Tragedy"));
 
-			BookRepository.save(new Book("943-46575-7", "Big Scary Book", "Matias Lento", 2021, 15.00,
+			BookRepository.save(new Book("943-46575-7", "Big Scary Book", "John Author", 2021, 15.00,
 					cRepository.findByName("Horror").get(0)));
-			BookRepository.save(new Book("8464-2523", "Little Funny Book", "Matias Lento", 2022, 10.00,
+			BookRepository.save(new Book("8464-2523", "Little Funny Book", "Jane Author", 2022, 10.00,
 					cRepository.findByName("Comedy").get(0)));
-			BookRepository.save(new Book("835-728357458", "Short Sad Book", "Matias Lento", 2023, 100.00,
+			BookRepository.save(new Book("835-728357458", "Short Sad Book", "Bob Bookmaker", 2023, 100.00,
 					cRepository.findByName("Tragedy").get(0)));
 
 			User user1 = new User("user", "$2a$10$rXDzQdck/8YPYyqgBLJODe.3/.P7l18ZibXzsTSLZP4NHYYHWE5qm", "USER");
