@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import hh_sof03.bookstore2.domain.Book;
-import hh_sof03.bookstore2.domain.Category;
+
 import hh_sof03.bookstore2.domain.BookRepository;
 
 
